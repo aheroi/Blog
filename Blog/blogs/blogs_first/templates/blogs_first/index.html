@@ -1,0 +1,27 @@
+<p>{% extends 'blogs_first/base.html' %}</p>
+
+{% block content %}
+  <p>Blog helps you keep  track of news from IT.</p>
+
+  <p>Topics</p>
+
+  <ul>
+  {% for blog in blogs %}
+    <li>
+        <p>{{ blog.date_added }}</p>
+        <p>{{ blog.title | linebreaks }}</p>
+        <p>{{ blog.text | linebreaks }}</p>
+        <p>
+          <a href="{% url 'blogs_first:edit_blog' blog.id %}">Edit topic</a>
+        </p>
+    </li>
+        
+  {% empty %}
+    <li>No topic have been added yet.</li>
+  {% endfor %}  
+
+  </ul>
+
+  <a href="{% url 'blogs_first:new_topic' %}">Add a new topic:</a>   
+
+{% endblock content %}

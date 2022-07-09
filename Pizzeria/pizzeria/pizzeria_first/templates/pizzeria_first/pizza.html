@@ -1,0 +1,18 @@
+{%  extends  'pizzeria_first/base.html'  %}
+
+{%  block content  %}
+
+  <p>Pizza: {{  pizza  }}</p>
+
+  <p>Toppings:</p>
+  <ul>
+  {%  for entry in entries  %}
+    <li>
+      <!-- <p>{{  entry.date_added|date:'M d, Y H:i'  }}</p>    # display the date of topping -->
+      <p>{{  entry.text | linebreaks  }}</p>
+    </li>
+  {%  empty  %}
+    <li>There are no entries this pizza yet.</li>
+  {%  endfor  %}
+  </ul>
+{%  endblock content %}
